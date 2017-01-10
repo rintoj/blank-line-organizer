@@ -48,6 +48,7 @@ function processLines(content) {
         content = (content || '').replace(/\}[\s\t]*\n+/gm, '}\n\n');
         content = (content).replace(/\}[\s\t]*;[\s\t]*\n+/gm, '};\n\n');
     }
+
     return (content || '').replace(/\n[\s\t]*\n+/gm, (config.keepOneEmptyLine !== true) ? '\n' : '\n\n');
 }
 
