@@ -16,20 +16,49 @@
         "url": "git+https://github.com/rintoj/empty-line-remover.git"
     },
     "activationEvents": [
-        "onCommand:extension.remove-empty-lines"
+        "onCommand:emptyLine.remove",
+        "*"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [{
-            "command": "extension.remove-empty-lines",
-            "title": "Remove multiple empty lines"
+            "command": "emptyLine.remove",
+            "title": "Remove empty lines"
         }],
         "keybindings": [{
-            "command": "extension.remove-empty-lines",
-            "title": "Remove multiple empty lines",
-            "key": "ctrl+.",
-            "mac": "cmd+."
-        }]
+            "command": "emptyLine.remove",
+            "title": "Remove empty lines",
+            "key": "ctrl+l",
+            "mac": "cmd+l"
+        }],
+        "configuration": {
+            "type": "object",
+            "title": "Configuration for emptyLine",
+            "properties": {
+                "emptyLine.keepOneEmptyLine": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Set to false to remove all empty lines or true to keep one."
+                },
+                "emptyLine.triggerOnSave": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If set to true, the command will be triggered on save."
+                },
+                "emptyLine.insertLineAfterBlock": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If set to true, inserts an empty line after a block statement"
+                },
+                "emptyLine.languageIds": {
+                    "type": "array",
+                    "default": [
+                        "javascript", "typescript", "json", "css", "scss"
+                    ],
+                    "description": "List of languages to be processed"
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
