@@ -45,10 +45,10 @@ function isValidLanguage(languageId) {
 // remove empty lines
 function processLines(content) {
     if (config.insertLineAfterBlock) {
-        content = (content || '').replace(/\}[\s\t]*\n+/g, '}\n\n');
-        content = (content || '').replace(/\}[\s\t]*;[\s\t]*\n+/g, '};\n\n');
+        content = (content || '').replace(/\}[\s\t]*\n+/gm, '}\n\n');
+        content = (content).replace(/\}[\s\t]*;[\s\t]*\n+/gm, '};\n\n');
     }
-    return (content || '').replace(/\n[\s\t]*\n+/g, (config.keepOneEmptyLine !== true) ? '\n' : '\n\n');
+    return (content || '').replace(/\n[\s\t]*\n+/gm, (config.keepOneEmptyLine !== true) ? '\n' : '\n\n');
 }
 
 function doAction(event) {
@@ -76,10 +76,14 @@ function doAction(event) {
 
     // select text
     var text = editor.document.getText(selection);
+    var processedLines = processLines(text);
+
+    // do nothing if no change
+    if (processedLines === text) return;
 
     // format text
     editor.edit((edit) => {
-        edit.replace(selection, processLines(text));
+        edit.replace(selection, processedLines);
     });
 }
 

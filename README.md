@@ -1,70 +1,33 @@
-# chai-spec-generator
+# Blank Line Organizer
 
-This extension will generate chai test specs from a javascript object.
+This extension will help you organize blank lines in the code by removing multiple blank lines and by inserting empty line after a block statement.
+
+## Demo
+
+![Demo](./demo/demo.gif)
 
 ## Usage
 
-Select a javascript object in a text editor and press `Ctrl + U` / `Cmd + U`
+Press `Ctrl + ;` / `Cmd + ;`
 
-## Example
+or
 
-```
-{
-  status: 'deleted',
-  item: {
-    name: 'Sample User',
-    userId: 'sample1@user.com',
-    active: true,
-    roles: []
-  }
-}
+Enter `Ctrl/Cmd + P` search for `> Remove blank lines`
 
-// the following code will be generated from the above object
+## Configuration
 
-target.should.be.a('object');
-target.should.have.property('status');
-target.status.should.be.equal('deleted');
-target.status.should.have.property('item');
-target.status.item.should.be.a('object');
-target.status.item.should.have.property('name');
-target.status.item.name.should.be.equal('Sample User');
-target.status.item.name.should.have.property('userId');
-target.status.item.name.userId.should.be.equal('sample1@user.com');
-target.status.item.name.userId.should.have.property('active');
-target.status.item.name.userId.active.should.be.equal(true);
-target.status.item.name.userId.active.should.have.property('roles');
-target.status.item.name.userId.active.roles.should.be.a('array');
-target.status.item.name.userId.active.roles.should.be.length(0);
-```
+| Configuration                   | Type      | Default Value | Description
+| ------------------------------- | --------- | ------------- | -----------------------------
+| blankLine.keepOneEmptyLine      | `boolean` | `true`        | Set to false to remove all blank lines or true to keep one.
+| blankLine.triggerOnSave         | `boolean` | `true`        | If set to true, the command will be triggered on save.
+| blankLine.insertLineAfterBlock  | `boolean` | `true`        | If set to true, inserts an blank line after a block statement. This has no effect if `keepOneEmptyLine` is set to `false`.
+| blankLine.languageIds           | `string[]`| `["javascript", "typescript", "json", "css", "scss"]` | Trigger this command on save, only if current language-id is in the list
 
-```
-{
-  status: 'deleted',
-  item: [{
-    name: 'Sample User',
-    userId: 'sample1@user.com',
-    active: true,
-    roles: []
-  }]
-}
-
-// the following code will be generated from the above object
-
-target.should.be.a('object');
-target.should.have.property('status');
-target.status.should.be.equal('deleted');
-target.status.should.have.property('item');
-target.status.item.should.be.a('array');
-target.status.item.should.be.length(1);
-target.status.item.should.all.have.property('name')
-target.status.item.should.all.have.property('userId')
-target.status.item.should.all.have.property('active')
-target.status.item.should.all.have.property('roles')
-```
+NOTE: By default the extension is configured to format on save, you can disable this by setting `blankLine.triggerOnSave` to `false`.
 
 ## Contributing
 
-Contributions are very welcome! Just send a pull request. Feel free to contact me or checkout my [Github](https://github.com/rintoj/chai-spec-generator) page.
+Contributions are very welcome! Just send a pull request. Feel free to contact me or checkout my [Github](https://github.com/rintoj/blank-line-organizer) page.
 
 ## Author
 
