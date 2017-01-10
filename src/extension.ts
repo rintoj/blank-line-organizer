@@ -4,8 +4,8 @@
 import * as vscode from 'vscode';
 
 // constance
-const NAME = 'emptyLine';
-const COMMAND = 'remove';
+const NAME = 'blankLine';
+const COMMAND = 'process';
 const CONTEXT_SAVE = 'save';
 const CONTEXT_COMMAND = 'command';
 
@@ -32,11 +32,8 @@ function setDefaultConfig() {
 
 // read extension configuration
 function readConfig() {
-    console.log('reading configuration....', config);
     let settings = vscode.workspace.getConfiguration(NAME);
     config = Object.assign({}, config, settings);
-
-    console.log('SETTINgs', settings, config);
 }
 
 // check for language validity
@@ -55,6 +52,8 @@ function processLines(content) {
 }
 
 function doAction(event) {
+
+    console.log('doAction', event);
 
     // get active text editor
     var editor = vscode.window.activeTextEditor;

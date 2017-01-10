@@ -1,7 +1,7 @@
 {
-    "name": "empty-line-remover",
-    "displayName": "Empty Line Remover",
-    "description": "Removes multiple empty lines optionally on save",
+    "name": "blank-line-organizer",
+    "displayName": "Blank Line Organizer",
+    "description": "Removes unnecessary blank lines and add if needed",
     "version": "0.0.0",
     "publisher": "rintoj",
     "icon": "images/icon.png",
@@ -13,44 +13,44 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/rintoj/empty-line-remover.git"
+        "url": "git+https://github.com/rintoj/blank-line-organizer.git"
     },
     "activationEvents": [
-        "onCommand:emptyLine.remove",
+        "onCommand:blankLine.remove",
         "*"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [{
-            "command": "emptyLine.remove",
-            "title": "Remove empty lines"
+            "command": "blankLine.process",
+            "title": "Remove blank lines"
         }],
         "keybindings": [{
-            "command": "emptyLine.remove",
-            "title": "Remove empty lines",
-            "key": "ctrl+l",
-            "mac": "cmd+l"
+            "command": "blankLine.process",
+            "title": "Remove blank lines",
+            "key": "ctrl+;",
+            "mac": "cmd+;"
         }],
         "configuration": {
             "type": "object",
-            "title": "Configuration for emptyLine",
+            "title": "Configuration for blankLine",
             "properties": {
-                "emptyLine.keepOneEmptyLine": {
+                "blankLine.keepOneEmptyLine": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Set to false to remove all empty lines or true to keep one."
+                    "description": "Set to false to remove all blank lines or true to keep one."
                 },
-                "emptyLine.triggerOnSave": {
+                "blankLine.triggerOnSave": {
                     "type": "boolean",
                     "default": true,
                     "description": "If set to true, the command will be triggered on save."
                 },
-                "emptyLine.insertLineAfterBlock": {
+                "blankLine.insertLineAfterBlock": {
                     "type": "boolean",
                     "default": true,
-                    "description": "If set to true, inserts an empty line after a block statement"
+                    "description": "If set to true, inserts an blank line after a block statement"
                 },
-                "emptyLine.languageIds": {
+                "blankLine.languageIds": {
                     "type": "array",
                     "default": [
                         "javascript", "typescript", "json", "css", "scss"
@@ -60,6 +60,9 @@
             }
         }
     },
+    "keywords": [
+        "Empty Line", "Blank Line", "New Line", "Formatter", "Remover"
+    ],
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
         "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
