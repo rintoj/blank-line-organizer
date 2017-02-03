@@ -1,3 +1,6 @@
+# v0.1.0
+* fix: performance issues
+
 # v0.0.2
 * Minor bug fix.
 
