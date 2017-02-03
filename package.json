@@ -2,7 +2,7 @@
   "name": "blank-line-organizer",
   "displayName": "Blank Line Organizer",
   "description": "Removes unnecessary blank lines and adds if needed",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "rintoj",
   "icon": "images/icon.png",
   "engines": {
@@ -21,16 +21,20 @@
   ],
   "main": "./out/src/extension",
   "contributes": {
-    "commands": [{
-      "command": "blankLine.process",
-      "title": "Remove blank lines"
-    }],
-    "keybindings": [{
-      "command": "blankLine.process",
-      "title": "Remove blank lines",
-      "key": "ctrl+;",
-      "mac": "cmd+;"
-    }],
+    "commands": [
+      {
+        "command": "blankLine.process",
+        "title": "Remove blank lines"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "blankLine.process",
+        "title": "Remove blank lines",
+        "key": "ctrl+;",
+        "mac": "cmd+;"
+      }
+    ],
     "configuration": {
       "type": "object",
       "title": "Configuration for blankLine",
