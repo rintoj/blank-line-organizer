@@ -21,20 +21,16 @@
   ],
   "main": "./out/src/extension",
   "contributes": {
-    "commands": [
-      {
-        "command": "blankLine.process",
-        "title": "Remove blank lines"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "blankLine.process",
-        "title": "Remove blank lines",
-        "key": "ctrl+;",
-        "mac": "cmd+;"
-      }
-    ],
+    "commands": [{
+      "command": "blankLine.process",
+      "title": "Remove blank lines"
+    }],
+    "keybindings": [{
+      "command": "blankLine.process",
+      "title": "Remove blank lines",
+      "key": "ctrl+;",
+      "mac": "cmd+;"
+    }],
     "configuration": {
       "type": "object",
       "title": "Configuration for blankLine",
@@ -58,7 +54,9 @@
           "type": "array",
           "default": [
             "javascript",
+            "javascriptreact",
             "typescript",
+            "typescriptreact",
             "json",
             "css",
             "scss"
