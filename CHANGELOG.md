@@ -1,4 +1,7 @@
 # v0.1.0
+* add: react support (updated default configuration)
+
+# v0.1.0
 * fix: performance issues
 
 # v0.0.2
