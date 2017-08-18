@@ -1,6 +1,6 @@
 # Blank Line Organizer
 
-This extension will help you organize blank lines in the code by removing multiple blank lines and by inserting empty line after a block statement.
+This extension will help you organize blank lines in the code by removing multiple blank lines. The extension removes blank lines only from the selected lines if any, otherwise from the entire file.
 
 ## Demo
 

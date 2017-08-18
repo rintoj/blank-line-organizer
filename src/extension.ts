@@ -54,6 +54,14 @@ function processLines(lines: vscode.TextLine[]): string[] {
     .map((line: vscode.TextLine) => line.text)
 }
 
+function selectLines(editor: vscode.TextEditor, start, end) {
+  var lines = []
+  for (let lineIndex = start; lineIndex < end; lineIndex++) {
+    lines.push(editor.document.lineAt(lineIndex));
+  }
+  return lines;
+}
+
 function doAction(event) {
 
   // get active text editor
@@ -68,11 +76,17 @@ function doAction(event) {
   // do nothing if not valid language
   if (event !== CONTEXT_COMMAND && !isValidLanguage(editor.document.languageId)) return;
 
-  // select text
-  var lines = []
-  for (let lineIndex = 1; lineIndex < editor.document.lineCount; lineIndex++) {
-    lines.push(editor.document.lineAt(lineIndex));
+  // select start and end lines
+  var selection = editor.selection;
+  var start = 1
+  var end = editor.document.lineCount
+  if (selection.start.line !== selection.end.line) {
+    start = selection.start.line
+    end = selection.end.line
   }
+
+  // select text
+  var lines = selectLines(editor, start, end)
 
   // this where magic happens
   var processedLines = processLines(lines);
@@ -82,7 +96,7 @@ function doAction(event) {
 
   // format text
   editor.edit((edit) => {
-    edit.replace(new vscode.Range(1, 0, editor.document.lineCount, 0), processedLines.join('\n'));
+    edit.replace(new vscode.Range(start, 0, end, 0), processedLines.join('\n'));
   });
 }
 
