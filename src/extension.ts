@@ -91,8 +91,9 @@ function doAction(event) {
   // this where magic happens
   var processedLines = processLines(lines);
 
-  // do nothing if no change
-  if (lines.length === processedLines.length) return;
+  if (end != editor.document.lineCount) {
+    processedLines.push('')
+  }
 
   // format text
   editor.edit((edit) => {
