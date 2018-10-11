@@ -92,7 +92,7 @@ function doAction(event) {
   // do nothing if there is no change
   if (lines.map((line: vscode.TextLine) => line.text).join('\n') === processedLines.join('\n')) { return }
 
-  if (end != editor.document.lineCount && end + 1 !== editor.document.lineCount) {
+  if (end != editor.document.lineCount) {
     processedLines.push('')
   }
 
