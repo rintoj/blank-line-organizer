@@ -2,7 +2,7 @@
   "name": "blank-line-organizer",
   "displayName": "Blank Line Organizer",
   "description": "Removes unnecessary blank lines and adds if needed",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "publisher": "rintoj",
   "icon": "images/icon.png",
   "engines": {
