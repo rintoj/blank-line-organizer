@@ -13,7 +13,6 @@ const CONTEXT_COMMAND = 'command';
 interface ExtensionConfig {
   keepOneEmptyLine?: boolean;
   triggerOnSave?: boolean;
-  insertLineAfterBlock?: boolean;
   languageIds?: string[];
 }
 
@@ -21,7 +20,6 @@ interface ExtensionConfig {
 let config: ExtensionConfig = {
   keepOneEmptyLine: true,
   triggerOnSave: true,
-  insertLineAfterBlock: true,
   languageIds: ['javascript', 'typescript', 'json']
 };
 
@@ -91,7 +89,10 @@ function doAction(event) {
   // this where magic happens
   var processedLines = processLines(lines);
 
-  if (end != editor.document.lineCount) {
+  // do nothing if there is no change
+  if (lines.map((line: vscode.TextLine) => line.text).join('\n') === processedLines.join('\n')) { return }
+
+  if (end != editor.document.lineCount && end + 1 !== editor.document.lineCount) {
     processedLines.push('')
   }
 

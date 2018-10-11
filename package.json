@@ -42,17 +42,12 @@
         "blankLine.keepOneEmptyLine": {
           "type": "boolean",
           "default": true,
-          "description": "Set to false to remove all blank lines or true to keep one."
+          "description": "If set to true removes all consecutive blank lines, except one."
         },
         "blankLine.triggerOnSave": {
           "type": "boolean",
           "default": true,
           "description": "If set to true, the command will be triggered on save."
-        },
-        "blankLine.insertLineAfterBlock": {
-          "type": "boolean",
-          "default": true,
-          "description": "If set to true, inserts an blank line after a block statement"
         },
         "blankLine.languageIds": {
           "type": "array",
