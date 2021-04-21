@@ -14,38 +14,39 @@ or
 
 Enter `Ctrl/Cmd + P` search for `> Remove blank lines`
 
+or
+
+Set triggerOnSave to true and save the file
+
 ## Configuration
 
 | Configuration                   | Type      | Default Value | Description
 | ------------------------------- | --------- | ------------- | -----------------------------
 | blankLine.keepOneEmptyLine      | `boolean` | `true`        | Set to false to remove all blank lines or true to keep one.
 | blankLine.triggerOnSave         | `boolean` | `true`        | If set to true, the command will be triggered on save.
-| blankLine.insertLineAfterBlock  | `boolean` | `true`        | If set to true, inserts an blank line after a block statement. This has no effect if `keepOneEmptyLine` is set to `false`.
+| blankLine.insertLineAfterBlock  | `boolean` | `true`        | If set to true inserts a blank line after block statement (unless the next line is also closing a block).
+| blankLine.removeBlockPadding    | `boolean` | `true`        | If set to true removes all blank lines after opening and before closing a block statement.
 | blankLine.languageIds           | `string[]`| `["javascript", "typescript", "json", "css", "scss"]` | Trigger this command on save, only if current language-id is in the list
 
 NOTE: By default the extension is configured to format on save, you can disable this by setting `blankLine.triggerOnSave` to `false`.
 
 ## Contributing
 
-Contributions are very welcome! Just send a pull request. Feel free to contact me or checkout my [Github](https://github.com/rintoj/blank-line-organizer) page.
+Contributions are very welcome! Just send a pull request. Feel free to contact me or checkout my [Github](https://github.com/LucasAMello/blank-line-organizer-plus) page.
 
 ## Author
 
-**Rinto Jose** (rintoj)
+**Lucas Mello** (LucasAMello)
 
 Follow me:
-  [Github](https://github.com/rintoj)
-| [Facebook](https://www.facebook.com/rinto.jose)
-| [Twitter](https://twitter.com/rintoj)
-| [Google+](https://plus.google.com/+RintoJoseMankudy)
-| [Youtube](https://youtube.com/+RintoJoseMankudy)
+  [Github](https://github.com/LucasAMello)
 
 ## License
 
 ```
 The MIT License (MIT)
 
-Copyright (c) 2016 Rinto Jose (rintoj)
+Copyright (c) 2021 Lucas Mello (LucasAMello)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,3 +1,7 @@
+# v0.2.0
+
+* feature: restored insertLineAfterBlock and added removeBlockPadding
+
 # v0.1.1
 
 * feature: apply only to selected text (fixes #2)
