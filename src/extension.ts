@@ -64,6 +64,7 @@ function selectLines(editor: vscode.TextEditor, start: number, end: number) {
     for (let lineIndex = start; lineIndex < end; lineIndex++) {
         lines.push(editor.document.lineAt(lineIndex));
     }
+
     return lines;
 }
 
@@ -106,6 +107,10 @@ function doAction(event: string) {
     editor.edit((edit) => {
         edit.replace(new vscode.Range(start, 0, end, 0), processedLines.join('\n'));
     });
+
+    if (event === CONTEXT_SAVE) {
+        editor.document.save();
+    }
 }
 
 export function activate(context: vscode.ExtensionContext) {
