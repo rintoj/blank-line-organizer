@@ -2,7 +2,7 @@
     "name": "blanklineplus",
     "displayName": "Blank Line Plus",
     "description": "Removes unnecessary blank lines and adds if needed",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "publisher": "LucasAMello",
     "icon": "images/icon.png",
     "engines": {
