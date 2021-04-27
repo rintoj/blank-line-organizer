@@ -47,16 +47,22 @@ function processLines(lines: vscode.TextLine[]): string[] {
 
                 if (config.removeBlockPadding) {
                     if (line.isEmptyOrWhitespace && prevLine.text.trim()[prevLine.text.trim().length - 1] === '{') { return a; }
-                    if (prevLine.isEmptyOrWhitespace && line.text.trim() === '}') { a.pop(); }
+                    if (prevLine.isEmptyOrWhitespace && beginsWithClosingBracket(line.text)) { a.pop(); }
                 }
 
-                if (config.insertLineAfterBlock && prevLine.text.trim() === '}' && !line.isEmptyOrWhitespace && line.text.trim()[0] !== '}') { a.push(null); }
+                if (config.insertLineAfterBlock && prevLine.text.trim() === '}' && !line.isEmptyOrWhitespace && !beginsWithClosingBracket(line.text)) { a.push(null); }
             }
 
             if (config.keepOneEmptyLine !== true && line.isEmptyOrWhitespace) { return a; }
 
             return a.concat([line]);
         }, []).map(line => line ? line.text : '');
+}
+
+function beginsWithClosingBracket(text: string) {
+    const trimmed = text.trim()[0];
+    if (trimmed.length === 0) { return false; }
+    return trimmed[0] === '}' || trimmed[0] === ']' || trimmed[0] === ')';
 }
 
 function selectLines(editor: vscode.TextEditor, start: number, end: number) {
